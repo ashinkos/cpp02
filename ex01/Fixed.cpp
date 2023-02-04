@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaouni <aaouni@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/04 04:30:03 by aaouni            #+#    #+#             */
+/*   Updated: 2023/02/04 04:30:32 by aaouni           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
-#include <cmath>
 
 Fixed::Fixed():_value(0){
 	
@@ -9,6 +20,7 @@ Fixed::Fixed():_value(0){
 Fixed::~Fixed(){
 	std::cout << "Destructor called" << std::endl;
 } 
+
 Fixed::Fixed(const int n)
 {	
 	_value = n << _fraction;
@@ -18,7 +30,6 @@ Fixed::Fixed(const float f)
 {
 	_value = roundf(f * (1 << _fraction));
 }
-
 
 Fixed::Fixed(const Fixed &f){
 	std::cout << "Copy constructor called" << std::endl;

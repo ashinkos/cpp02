@@ -2,13 +2,14 @@
 #define FIXED_CLASS
 
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
 public:
 	Fixed();
-	Fixed(const int);
-	Fixed(const float);
+	Fixed(const int n);
+	Fixed(const float f);
 	~Fixed();
 	Fixed(const Fixed &f);
 	Fixed & operator =(const Fixed &f);
