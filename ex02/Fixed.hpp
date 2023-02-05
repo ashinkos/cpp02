@@ -6,7 +6,7 @@
 /*   By: aaouni <aaouni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 21:14:27 by aaouni            #+#    #+#             */
-/*   Updated: 2023/02/05 01:29:48 by aaouni           ###   ########.fr       */
+/*   Updated: 2023/02/05 03:44:46 by aaouni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,33 @@ public:
 	float toFloat( void ) const;
 	int toInt( void ) const;
 	
-	Fixed operator+(const Fixed& obj);
-	Fixed operator-(const Fixed& obj);
-	Fixed operator*(const Fixed& obj);
-	Fixed operator/(const Fixed& obj);
+	Fixed operator+(const Fixed& obj)const;
+	Fixed operator-(const Fixed& obj)const;
+	Fixed operator*(const Fixed& obj)const;
+	Fixed operator/(const Fixed& obj)const;
 	
-	bool operator>(const Fixed& obj);
-	bool operator<(const Fixed& obj); 
-	bool operator==(const Fixed& obj); 
-	bool operator!=(const Fixed& obj); 
-	bool operator>=(const Fixed& obj); 
-	bool operator<=(const Fixed& obj); 
+	bool operator>(const Fixed& obj) const;
+	bool operator<(const Fixed& obj) const; 
+	bool operator==(const Fixed& obj) const; 
+	bool operator!=(const Fixed& obj) const; 
+	bool operator>=(const Fixed& obj) const; 
+	bool operator<=(const Fixed& obj) const; 
 	
 	// prefiFixed increment
 	Fixed& operator++();
     // postfiFixed increment
     Fixed operator++(int);
     // prefiFixed decrement
-    Fixed& operator--()
-    {
-        // actual decrement takes place here
-        return *this; // return new value by reference
-    }
+    Fixed& operator--();
  
     // postfiFixed decrement
-    Fixed operator--(int)
-    {
-        Fixed old = *this; // copy old value
-        operator--();  // prefix decrement
-        return old;    // return old value
-    }
+    Fixed operator--(int);
+
+	
+	static Fixed &min(Fixed &a, Fixed &b);
+	static const Fixed &min(const Fixed &a, const Fixed &b);
+	static  Fixed &max(Fixed &a, Fixed &b);
+	static const Fixed &max(const Fixed &a, const Fixed &b);
 
 private:
 	int	_value;
