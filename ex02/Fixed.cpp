@@ -6,7 +6,7 @@
 /*   By: aaouni <aaouni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 04:30:03 by aaouni            #+#    #+#             */
-/*   Updated: 2023/02/05 03:51:00 by aaouni           ###   ########.fr       */
+/*   Updated: 2023/02/05 22:57:35 by aaouni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,15 @@ Fixed Fixed::operator-(const Fixed& obj)const{
 }
 
 Fixed Fixed::operator*(const Fixed& obj)const{
-	return (Fixed(this->toFloat() * obj.toFloat() ));
+	Fixed mult;
+	mult.setRawBits((_value * obj._value)  >> _fraction);
+	return (mult);
 }
 
 Fixed Fixed::operator/(const Fixed& obj)const{
-	
-	return(Fixed(this->toFloat() / obj.toFloat()));
+	Fixed fract;
+	fract.setRawBits(((float)(_value) / obj._value) * (1 << _fraction) );
+	return (fract);
 }
 
 bool Fixed::operator>(const Fixed& obj)const{
