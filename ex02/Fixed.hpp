@@ -6,7 +6,7 @@
 /*   By: aaouni <aaouni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 21:14:27 by aaouni            #+#    #+#             */
-/*   Updated: 2023/02/04 23:16:11 by aaouni           ###   ########.fr       */
+/*   Updated: 2023/02/05 01:29:48 by aaouni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,22 @@ public:
 	float toFloat( void ) const;
 	int toInt( void ) const;
 	
-	Fixed operator + (Fixed const &obj);
-	Fixed operator - (Fixed const &obj);
-	Fixed operator / (Fixed const &obj);
-	Fixed operator * (Fixed const &obj);
+	Fixed operator+(const Fixed& obj);
+	Fixed operator-(const Fixed& obj);
+	Fixed operator*(const Fixed& obj);
+	Fixed operator/(const Fixed& obj);
 	
-	bool operator==(const Fixed& lhs); 
-	bool operator!=(const Fixed& lhs); 
-	bool operator< (const Fixed& lhs); 
-	bool operator> (const Fixed& lhs);
-	bool operator<=(const Fixed& lhs); 
-	bool operator>=(const Fixed& lhs); 
+	bool operator>(const Fixed& obj);
+	bool operator<(const Fixed& obj); 
+	bool operator==(const Fixed& obj); 
+	bool operator!=(const Fixed& obj); 
+	bool operator>=(const Fixed& obj); 
+	bool operator<=(const Fixed& obj); 
 	
 	// prefiFixed increment
 	Fixed& operator++();
     // postfiFixed increment
     Fixed operator++(int);
-    
     // prefiFixed decrement
     Fixed& operator--()
     {

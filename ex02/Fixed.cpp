@@ -6,7 +6,7 @@
 /*   By: aaouni <aaouni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 04:30:03 by aaouni            #+#    #+#             */
-/*   Updated: 2023/02/04 23:20:03 by aaouni           ###   ########.fr       */
+/*   Updated: 2023/02/05 01:32:42 by aaouni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ Fixed::~Fixed(){
 
 Fixed::Fixed(const int n)
 {	
-	_value = n << _fraction;
 	std::cout << "Int constructor called" << std::endl;
+	_value = n << _fraction;
 }
 
 Fixed::Fixed(const float f)
 {
-	_value = roundf(f * (1 << _fraction));
 	std::cout << "Float constructor called" << std::endl;
+	_value = roundf(f * (1 << _fraction));
 }
 
 Fixed::Fixed(const Fixed &f){
@@ -68,14 +68,54 @@ std::ostream& operator << (std::ostream& os , const Fixed& f){
 	return(os);
 }
 
-Fixed Fixed::operator + (Fixed const &obj){
-	
+Fixed Fixed::operator+(const Fixed& obj){
 	return(Fixed(this->_value + obj._value));
 }
 
-bool Fixed::operator> (const Fixed& lhs){
+Fixed Fixed::operator-(const Fixed& obj){
+	return(Fixed(this->_value - obj._value));
+}
+
+Fixed Fixed::operator*(const Fixed& obj){
+	return(Fixed(this->_value * obj._value));
+}
+
+Fixed Fixed::operator/(const Fixed& obj){
+	if (obj._value == 0){
+		std::cout << "indeterminate form" << std::endl;
+		return (*this);
+	}
+	return(Fixed(this->_value * obj._value));
+}
+
+bool Fixed::operator>(const Fixed& obj){
 	
-	return(this->_value > lhs._value);
+	return(this->_value > obj._value);
+}
+
+bool Fixed::operator<(const Fixed& obj){
+	
+	return(this->_value < obj._value);
+}
+
+bool Fixed::operator==(const Fixed& obj){
+	
+	return(!operator>(obj) && !operator<(obj));
+}
+
+bool Fixed::operator!=(const Fixed& obj){
+	
+	return(!operator==(obj));
+}
+
+bool Fixed::operator>=(const Fixed& obj){
+	
+	return(operator>(obj) || operator==(obj));
+}
+
+bool Fixed::operator<=(const Fixed& obj){
+	
+	return(operator<(obj) || operator==(obj));
 }
 
 Fixed& Fixed::operator++(){

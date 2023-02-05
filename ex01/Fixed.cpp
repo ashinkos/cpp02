@@ -6,7 +6,7 @@
 /*   By: aaouni <aaouni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 04:30:03 by aaouni            #+#    #+#             */
-/*   Updated: 2023/02/04 22:37:26 by aaouni           ###   ########.fr       */
+/*   Updated: 2023/02/05 01:11:34 by aaouni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ Fixed::~Fixed(){
 
 Fixed::Fixed(const int n)
 {	
-	_value = n << _fraction;
 	std::cout << "Int constructor called" << std::endl;
+	_value = n << _fraction;
 }
 
 Fixed::Fixed(const float f)
 {
-	_value = roundf(f * (1 << _fraction));
 	std::cout << "Float constructor called" << std::endl;
+	_value = roundf(f * (1 << _fraction));
 }
 
 Fixed::Fixed(const Fixed &f){
